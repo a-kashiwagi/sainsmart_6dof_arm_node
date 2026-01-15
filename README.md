@@ -17,7 +17,7 @@ Joint は、サーボモータで駆動しているため、位置制御とな�
 ```
 
 ## Elbow Joint について
-実機では、Elbow（肘）Joint は、直接サーボモータが付いておらず、別 Link を介して駆動する為、コード上で角度を調整し、回転方向を反転させています。
+実機では、Elbow（肘）Joint は、直接サーボモータが付いておらず、別 Link を介して駆動する為、コード上で角度を調整しています。
 
 ```cpp
                                        // Adjustment (degree)
@@ -30,15 +30,19 @@ double adjust[6] = {
      2                                 // For joint 6
 };
 ```
+```cpp
+        }else if( strcmp(buffer,"joint3") == 0){
+                                       // for joint3
+            joint[2] = (RadToDeg(msg->position[i]) + adjust[2]) - joint[1];
+```
+
+## Shoulder Joint について
+同じように、Shoulder（肩）Joint は、回転方向を反転しています。
 
 ```cpp
         }else if( strcmp(buffer,"joint2") == 0){
                                        // for joint2
             joint[1] = (RadToDeg(msg->position[i]) + adjust[1]) * INVERT;
-
-        }else if( strcmp(buffer,"joint3") == 0){
-                                       // for joint3
-            joint[2] = (RadToDeg(msg->position[i]) + adjust[2]) - joint[1];
 ```
 
 ## 通信速度
