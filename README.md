@@ -8,7 +8,7 @@ ROS1 用に作成した Sainsmart 6dof ARM Node です。この Sainsmart の AR
 ![Sainsmart 6dof Arm](https://github.com/wedesoft/arduino-sainsmart/raw/master/6axis-size.jpg)
 
 ## 位置制御
-Joint は、サーボモータで駆動しているため、位置制御となりますが、サーボに搭載されているポテンショメータ（ロータリーエンコード）以外に、Joint 角度を取得するセンサーは搭載していない為、/joint_states を subscribe して、joint を動かす push 型制御をしております。
+Joint は、サーボモータで駆動しているため、位置制御となりますが、サーボに搭載されているポテンショメータ（ロータリーエンコーダー）以外に、Joint 角度を取得するセンサーは搭載していない為、/joint_states を subscribe して、joint を動かす push 型制御をしております。
 
 ```cpp
                                                    // Subscribe to /joint_states topic
